@@ -26,10 +26,11 @@ public class BirdDatabase {
 		return false;
 	}
 	
-	public void addObservation(String name) {
+	public void addObservation(String name, String who) {
 		for (Bird b:this.birds) {
 			if(b.name.equals(name)) {
 				b.increaseTimesObserved();
+				b.addObserver(who);
 			}
 		}
 	}

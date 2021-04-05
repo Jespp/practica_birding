@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//new imput item and new database
+		//new input item and new database
 		Scanner scanner = new Scanner(System.in);
 		BirdDatabase db = new BirdDatabase();
 		
@@ -26,6 +26,8 @@ public class Main {
 				show(scanner,db);
 			} else if (command.equals("Statistics")) {
 				statistics(db);
+			} else if (command.equals("Help")) {
+				printOptions();
 			} else {
 				System.out.println("Unknown command!");
 			}
@@ -56,7 +58,9 @@ public class Main {
 			if(!db.have(name)) {
 				System.out.println("Is not a bird!");
 			}else {
-			db.addObservation(name);
+				System.out.println("Who:? ");
+				String who= input.nextLine();
+			db.addObservation(name, who);
 			}
 		}
 		
@@ -72,6 +76,16 @@ public class Main {
 		
 		public static void statistics(BirdDatabase db) { 
 			db.showInfo();
+		}
+		
+		public static void printOptions() { 
+			System.out.println("*********  List of options  ***********\n");
+			System.out.println("Add        to add a new bird");
+			System.out.println("Show       to see the info about a bird");
+			System.out.println("Statistics to see the info of all birds");
+			System.out.println("Quit       to exit");
+			System.out.println("Help       to see this help\n");
+			System.out.println("****************************************");
 		}
 
 }
